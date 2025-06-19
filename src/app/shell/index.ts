@@ -1,0 +1,1 @@
+export * from './ui-components/not-found/not-found.component';

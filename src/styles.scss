@@ -1,0 +1,21 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .wrapper-container {
+    flex: 0 1 auto;
+  }
+  
+  .content-container {
+    flex: 1;
+    overflow: auto; /* Allows scrolling */
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer */
+  }
+  
+  body{
+    background-color: #D6FF4A;
+  }

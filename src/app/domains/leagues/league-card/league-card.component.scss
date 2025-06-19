@@ -1,0 +1,30 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(0, 99, 20, 0.2);
+  min-width: 800px;
+  min-height: 150px;
+  border-radius: 20px;
+}
+
+.logo {
+  min-width: 50px;
+  align-items: stretch;
+  border-radius: 20px 0px 0px 20px;
+}
+
+.logo-content {
+  margin: 10px;
+}
+.logo-content img {
+  max-width: 50px;
+}
+
+.card-info {
+  padding: 20px;
+}
+
+.date {
+  display: flex;
+  flex-direction: column !important;
+}

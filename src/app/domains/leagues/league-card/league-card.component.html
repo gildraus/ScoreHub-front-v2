@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="logo">
+    <div class="logo-content">
+      <img [src]="league.logoUrl" />
+    </div>
+  </div>
+  <div class="card-info">
+    {{ league.name }}
+    <div class="date" style="display: flex; flex-direction: column">
+      <span>Start date: {{ league.startDate }}</span>
+      <span>End date: {{ league.endDate }}</span>
+    </div>
+  </div>
+</div>
