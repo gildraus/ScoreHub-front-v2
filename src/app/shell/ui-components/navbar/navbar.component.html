@@ -15,7 +15,12 @@
     />
   </div>
   <ul class="navbar-links">
+    @if(authorized){
     <li><a (click)="goToProfile()">Profile</a></li>
     <li><a>Log out</a></li>
+    } @else{
+    <li><a (click)="goToLogin()">Log in</a></li>
+    <li><a (click)="goToRegister()">Register</a></li>
+    }
   </ul>
 </nav>

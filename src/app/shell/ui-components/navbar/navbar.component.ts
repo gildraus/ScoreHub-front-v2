@@ -9,6 +9,7 @@ import { RouterModule, Router } from '@angular/router';
 })
 export class NavbarComponent {
   constructor(private router: Router) {}
+  public authorized = false;
 
   //TO DO: make fetch for all leagues from db
   leagues = [
@@ -33,5 +34,11 @@ export class NavbarComponent {
 
   goToProfile() {
     this.router.navigate(['/profile']);
+  }
+  goToLogin(){
+    this.router.navigate(['/login']);
+  }
+  goToRegister(){
+    this.router.navigate(['/register']);
   }
 }

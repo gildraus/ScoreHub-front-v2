@@ -1,113 +1,98 @@
-<div class="registration-container">
-  <div class="registration-card">
-    <h2>Create Your Account</h2>
-    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" novalidate>
-      
-      <!-- First Name -->
-      <div class="form-group">
-        <label for="firstName">First Name *</label>
-        <input
-          type="text"
-          id="firstName"
-          formControlName="firstName"
-          class="form-control"
-          [class.is-invalid]="firstName?.invalid && (firstName?.dirty || firstName?.touched || isSubmitted)"
-          placeholder="Enter your first name">
-        <div class="invalid-feedback" 
-             *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched || isSubmitted)">
-          <div *ngIf="firstName?.errors?.['required']">First name is required</div>
-          <div *ngIf="firstName?.errors?.['minlength']">First name must be at least 2 characters</div>
-        </div>
+<div class="container">
+  <h2>Registration</h2>
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="firstName">First name:</label>
+      <input
+        type="text"
+        id="firstName"
+        formControlName="firstName"
+        class="form-control"
+      />
+      <label for="lastName">Last name:</label>
+      <input
+        type="text"
+        id="lastName"
+        formControlName="lastName"
+        class="form-control"
+      />
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        class="form-control"
+      />
+      <div
+        *ngIf="
+          registrationForm.get('email')?.invalid &&
+          registrationForm.get('email')?.touched
+        "
+        class="error"
+      >
+        <span *ngIf="registrationForm.get('email')?.errors?.['required']"
+          >Email is required</span
+        >
+        <span *ngIf="registrationForm.get('email')?.errors?.['email']"
+          >Enter a valid email</span
+        >
       </div>
+    </div>
 
-      <!-- Last Name -->
-      <div class="form-group">
-        <label for="lastName">Last Name *</label>
-        <input
-          type="text"
-          id="lastName"
-          formControlName="lastName"
-          class="form-control"
-          [class.is-invalid]="lastName?.invalid && (lastName?.dirty || lastName?.touched || isSubmitted)"
-          placeholder="Enter your last name">
-        <div class="invalid-feedback" 
-             *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched || isSubmitted)">
-          <div *ngIf="lastName?.errors?.['required']">Last name is required</div>
-          <div *ngIf="lastName?.errors?.['minlength']">Last name must be at least 2 characters</div>
-        </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        class="form-control"
+      />
+      <div
+        *ngIf="
+          registrationForm.get('password')?.invalid &&
+          registrationForm.get('password')?.touched
+        "
+        class="error"
+      >
+        <span *ngIf="registrationForm.get('password')?.errors?.['required']"
+          >Password is required</span
+        >
+        <span *ngIf="registrationForm.get('password')?.errors?.['minlength']"
+          >Password must be at least 6 characters</span
+        >
       </div>
+    </div>
 
-      <!-- Email -->
-      <div class="form-group">
-        <label for="email">Email Address *</label>
-        <input
-          type="email"
-          id="email"
-          formControlName="email"
-          class="form-control"
-          [class.is-invalid]="email?.invalid && (email?.dirty || email?.touched || isSubmitted)"
-          placeholder="Enter your email address">
-        <div class="invalid-feedback" 
-             *ngIf="email?.invalid && (email?.dirty || email?.touched || isSubmitted)">
-          <div *ngIf="email?.errors?.['required']">Email is required</div>
-          <div *ngIf="email?.errors?.['email']">Please enter a valid email address</div>
-        </div>
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password:</label>
+      <input
+        type="password"
+        id="confirmPassword"
+        formControlName="confirmPassword"
+        class="form-control"
+      />
+      <div
+        *ngIf="
+          registrationForm.get('confirmPassword')?.invalid &&
+          registrationForm.get('confirmPassword')?.touched
+        "
+        class="error"
+      >
+        Confirm password is required
       </div>
-
-      <!-- Password -->
-      <div class="form-group">
-        <label for="password">Password *</label>
-        <input
-          type="password"
-          id="password"
-          formControlName="password"
-          class="form-control"
-          [class.is-invalid]="password?.invalid && (password?.dirty || password?.touched || isSubmitted)"
-          placeholder="Enter your password">
-        <div class="invalid-feedback" 
-             *ngIf="password?.invalid && (password?.dirty || password?.touched || isSubmitted)">
-          <div *ngIf="password?.errors?.['required']">Password is required</div>
-          <div *ngIf="password?.errors?.['minlength']">Password must be at least 8 characters</div>
-          <div *ngIf="password?.errors?.['invalidPassword']">
-            Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character
-          </div>
-        </div>
-        <small class="form-text text-muted">
-          Password must be at least 8 characters and include uppercase, lowercase, number, and special character
-        </small>
+      <!-- Password mismatch error -->
+      <div
+        *ngIf="
+          !passwordsMatch && registrationForm.get('confirmPassword')?.touched
+        "
+        class="error"
+      >
+        Passwords do not match
       </div>
+    </div>
 
-      <!-- Confirm Password -->
-      <div class="form-group">
-        <label for="confirmPassword">Confirm Password *</label>
-        <input
-          type="password"
-          id="confirmPassword"
-          formControlName="confirmPassword"
-          class="form-control"
-          [class.is-invalid]="(confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched || isSubmitted)) || 
-                             (registrationForm.errors?.['passwordMismatch'] && (confirmPassword?.dirty || confirmPassword?.touched || isSubmitted))"
-          placeholder="Confirm your password">
-        <div class="invalid-feedback" 
-             *ngIf="(confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched || isSubmitted)) || 
-                    (registrationForm.errors?.['passwordMismatch'] && (confirmPassword?.dirty || confirmPassword?.touched || isSubmitted))">
-          <div *ngIf="confirmPassword?.errors?.['required']">Please confirm your password</div>
-          <div *ngIf="registrationForm.errors?.['passwordMismatch'] && !confirmPassword?.errors?.['required']">
-            Passwords do not match
-          </div>
-        </div>
-      </div>
-
-      <!-- Submit Button -->
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block">
-          Create Account
-        </button>
-        <button type="button" class="btn btn-secondary btn-block" (click)="resetForm()">
-          Reset Form
-        </button>
-      </div>
-
-    </form>
-  </div>
+    <button type="submit" [disabled]="registrationForm.invalid" class="btn">
+      Register
+    </button>
+  </form>
 </div>
