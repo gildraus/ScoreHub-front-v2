@@ -11,6 +11,7 @@ import {
 } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { UserService } from '../../../shell';
+import { Router } from '@angular/router';
 
 function passwordMatchValidator(
   control: AbstractControl
@@ -39,7 +40,8 @@ export class RegistrationFormComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {
     this.registrationForm = this.formBuilder.group(
       {
@@ -68,6 +70,7 @@ export class RegistrationFormComponent {
       this.userService.registerUser(userData).subscribe({
         next: (response) => {
           console.log('Registration successful', response);
+              this.router.navigate(['/login']);
         },
         error: (error) => {
           console.error('Registration failed', error);
