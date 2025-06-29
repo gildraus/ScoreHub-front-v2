@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
+import { url } from 'inspector';
+import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -8,7 +10,7 @@ import { RouterModule, Router } from '@angular/router';
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
   public authorized = false;
 
   //TO DO: make fetch for all leagues from db
@@ -28,17 +30,26 @@ export class NavbarComponent {
     {
       title: 'Eurocup',
       icon: ''
+    },
+    {
+      title: 'Turnir Tabanovac',
+      icon: '',
+      url: '/league/99'
     }
   ];
-  
+
 
   goToProfile() {
     this.router.navigate(['/profile']);
   }
-  goToLogin(){
+  goToLogin() {
     this.router.navigate(['/login']);
   }
-  goToRegister(){
+  goToRegister() {
     this.router.navigate(['/register']);
+  }
+  goToLeague(url: string = '') {
+    console.log('Navigating to league with URL:', url);
+    this.router.navigate([url]);
   }
 }

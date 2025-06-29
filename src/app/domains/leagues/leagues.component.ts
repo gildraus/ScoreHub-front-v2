@@ -10,6 +10,7 @@ import { environment } from '../../environments/environment';
   imports: [LeagueCardComponent],
   templateUrl: './leagues.component.html',
   styleUrl: './leagues.component.scss',
+  standalone: true,
 })
 export class LeaguesComponent implements OnInit{
   

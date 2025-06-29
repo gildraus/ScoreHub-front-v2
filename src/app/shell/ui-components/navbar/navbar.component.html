@@ -2,17 +2,13 @@
   <ul class="navbar-links">
     @for (league of leagues; track $index) {
     <li>
-      <a>{{ league.title }}</a>
+      <a (click)="goToLeague(league.url)">{{ league.title }}</a>
     </li>
     }
     <li><a>Add custom league</a></li>
   </ul>
   <div class="navbar-logo">
-    <input
-      type="text"
-      class="search-input"
-      placeholder="Search for team, player, league..."
-    />
+    <input type="text" class="search-input" placeholder="Search for team, player, league..." />
   </div>
   <ul class="navbar-links">
     @if(authorized){
