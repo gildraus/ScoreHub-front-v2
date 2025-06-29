@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { UserLoginData } from '../models/user.model';
 
 export interface UserRegistrationData {
   email: string;
@@ -12,6 +13,14 @@ export interface UserRegistrationData {
 export interface RegistrationResponse {
   message?: string;
   userId?: string;
+}
+
+export interface LoginResponse {
+  message: string;
+  token: string;
+  userId: string;
+  email: string;
+  fullName: string;
 }
 
 @Injectable({
@@ -25,5 +34,11 @@ export class UserService {
     const endpoint = `${this.apiUrl}api/account/register`;
     
     return this.http.post<RegistrationResponse>(endpoint, userData);
+  }
+
+  public loginUser(userData: UserLoginData): Observable<LoginResponse> {
+    const endpoint = `${this.apiUrl}api/account/login`;
+
+    return this.http.post<LoginResponse>(endpoint, userData);
   }
 }

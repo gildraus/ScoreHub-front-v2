@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from '../../../shell';
 
 @Component({
   selector: 'app-login-form',
@@ -15,7 +16,8 @@ export class LoginFormComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -26,8 +28,16 @@ export class LoginFormComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       const loginData = this.loginForm.value;
-      //implement login logic here, e.g., call a service to authenticate the user
-      console.log('Login data submitted:', loginData);
+      
+      this.userService.loginUser(loginData).subscribe({
+        next: (response) => {
+          console.log('Login successful', response);
+          this.router.navigate(['']);
+        },
+        error: (error) => {
+          console.error('Login failed', error);
+        },
+      });
       this.router.navigate(['']);
     } else {
       console.error('Login form is invalid');
