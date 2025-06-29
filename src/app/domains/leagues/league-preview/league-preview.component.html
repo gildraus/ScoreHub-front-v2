@@ -1,15 +1,286 @@
-<div
-  style="
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 500px;
-  "
->
-  <p>Showing data for league with ID: {{ id }}</p>
-  <h3>
-    It would show a preview of the league data if Nikola had taken his
-    internship seriously and actually made the backend for ScoreHub.
-  </h3>
+<div class="container">
+  <div class="left-sidebar">
+    <h3>Basic info sidebar</h3>
+    <ul>
+      <li>League Name</li>
+      <li>League Type</li>
+      <li>Number of Teams</li>
+      <li>Start Date</li>
+      <li>End Date</li>
+      <li>Status</li>
+      <li>Created By</li>
+      <li>Last Updated</li>
+    </ul>
+  </div>
+  <div class="content">
+
+    <!-- Title header -->
+    <div class="header-info">
+      <!-- TO DO: replace fixed values with dynamic data -->
+      <img
+        src="https://upload.wikimedia.org/wikipedia/sr/thumb/a/ac/Grb_fudbalske_reprezentacije_Srbije.png/250px-Grb_fudbalske_reprezentacije_Srbije.png"
+        alt="League Logo" class="league-logo">
+      <div>
+        <h1>Memorijalni turnir "Vlajić Tomiša" Tabanovac</h1>
+        <h3>2025</h3>
+      </div>
+    </div>
+
+    <!-- Head-to-head highlighted match -->
+    <div class="head-to-head">
+      <div class="team-1">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgs73j_xY1W-dKff9TrXL8m9TSs71lB2J_Qw&s"
+          alt="team-1" class="team-img" />
+        <h4>Nectar Family</h4>
+      </div>
+
+      <div class="divider">
+        <div class="date">
+          <p>29.07.2025</p>
+        </div>
+        <div class="separator">
+          -
+        </div>
+      </div>
+      <div class="team-2">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtW3SJcLuDO9YOZTBMfr2MlcPJYMOlgKI4HQ&s"
+          alt="team-2" class="team-img" />
+        <h4>Frizerski salon SISKO</h4>
+      </div>
+    </div>
+
+    <!-- Drafted pairs -->
+    <div class="pairs"></div>
+
+    <!-- Table -->
+    <div class="table">
+
+
+      <div class="table-wrapper">
+        <table class="tournament-table">
+          <thead>
+            <tr>
+              <th class="position-col">Poz.</th>
+              <th class="team-col">Tim</th>
+              <th class="matches-col">O</th>
+              <th class="matches-col">P</th>
+              <th class="matches-col">N</th>
+              <th class="matches-col">I</th>
+              <th class="goals-col">GD</th>
+              <th class="goals-col">GR</th>
+              <th class="points-col">Bod.</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="first-place">
+              <td class="position">
+                <span class="position-number">1</span>
+                <div class="position-indicator champion"></div>
+              </td>
+              <td class="team">
+                <div class="team-info">
+                  <span class="team-name">Nectar Family</span>
+                  <span class="team-form">
+                    <span class="result win">P</span>
+                    <span class="result win">P</span>
+                    <span class="result win">P</span>
+                    <span class="result draw">N</span>
+                    <span class="result win">P</span>
+                  </span>
+                </div>
+              </td>
+              <td>11</td>
+              <td>9</td>
+              <td>2</td>
+              <td>0</td>
+              <td class="positive">28</td>
+              <td class="positive">7</td>
+              <td class="points"><strong>29</strong></td>
+            </tr>
+
+            <tr class="champions-league">
+              <td class="position">
+                <span class="position-number">2</span>
+                <div class="position-indicator playoff"></div>
+              </td>
+              <td class="team">
+                <div class="team-info">
+                  <span class="team-name">Frizerski salon SISKO</span>
+                  <span class="team-form">
+                    <span class="result win">P</span>
+                    <span class="result win">P</span>
+                    <span class="result loss">I</span>
+                    <span class="result win">P</span>
+                    <span class="result draw">N</span>
+                  </span>
+                </div>
+              </td>
+              <td>11</td>
+              <td>7</td>
+              <td>3</td>
+              <td>1</td>
+              <td class="positive">22</td>
+              <td class="positive">12</td>
+              <td class="points"><strong>24</strong></td>
+            </tr>
+
+            <tr class="champions-league">
+              <td class="position">
+                <span class="position-number">3</span>
+                <div class="position-indicator playoff"></div>
+              </td>
+              <td class="team">
+                <div class="team-info">
+                  <span class="team-name">Agro Laki</span>
+                  <span class="team-form">
+                    <span class="result draw">N</span>
+                    <span class="result win">P</span>
+                    <span class="result win">P</span>
+                    <span class="result loss">I</span>
+                    <span class="result win">P</span>
+                  </span>
+                </div>
+              </td>
+              <td>11</td>
+              <td>6</td>
+              <td>4</td>
+              <td>1</td>
+              <td class="positive">19</td>
+              <td class="positive">8</td>
+              <td class="points"><strong>22</strong></td>
+            </tr>
+
+            <tr>
+              <td class="position">
+                <span class="position-number">4</span>
+              </td>
+              <td class="team">
+                <div class="team-info">
+                  <span class="team-name">Klub 64</span>
+                  <span class="team-form">
+                    <span class="result win">P</span>
+                    <span class="result loss">I</span>
+                    <span class="result draw">N</span>
+                    <span class="result win">P</span>
+                    <span class="result loss">I</span>
+                  </span>
+                </div>
+              </td>
+              <td>11</td>
+              <td>5</td>
+              <td>3</td>
+              <td>3</td>
+              <td class="positive">15</td>
+              <td class="positive">14</td>
+              <td class="points"><strong>18</strong></td>
+            </tr>
+
+            <tr>
+              <td class="position">
+                <span class="position-number">5</span>
+              </td>
+              <td class="team">
+                <div class="team-info">
+                  <span class="team-name">Sindikat srpske policije</span>
+                  <span class="team-form">
+                    <span class="result loss">I</span>
+                    <span class="result draw">N</span>
+                    <span class="result win">P</span>
+                    <span class="result draw">N</span>
+                    <span class="result draw">N</span>
+                  </span>
+                </div>
+              </td>
+              <td>11</td>
+              <td>4</td>
+              <td>5</td>
+              <td>2</td>
+              <td class="neutral">12</td>
+              <td class="neutral">12</td>
+              <td class="points"><strong>17</strong></td>
+            </tr>
+
+            <tr>
+              <td class="position">
+                <span class="position-number">6</span>
+              </td>
+              <td class="team">
+                <div class="team-info">
+                  <span class="team-name">FK Omladinac Šetonje</span>
+                  <span class="team-form">
+                    <span class="result draw">N</span>
+                    <span class="result loss">I</span>
+                    <span class="result win">P</span>
+                    <span class="result loss">I</span>
+                    <span class="result win">P</span>
+                  </span>
+                </div>
+              </td>
+              <td>11</td>
+              <td>4</td>
+              <td>2</td>
+              <td>5</td>
+              <td class="neutral">11</td>
+              <td class="negative">16</td>
+              <td class="points"><strong>14</strong></td>
+            </tr>
+
+            <tr class="relegation">
+              <td class="position">
+                <span class="position-number">7</span>
+                <div class="position-indicator relegation"></div>
+              </td>
+              <td class="team">
+                <div class="team-info">
+                  <span class="team-name">Zadrugar Tabanovac</span>
+                  <span class="team-form">
+                    <span class="result loss">I</span>
+                    <span class="result loss">I</span>
+                    <span class="result draw">N</span>
+                    <span class="result loss">I</span>
+                    <span class="result draw">N</span>
+                  </span>
+                </div>
+              </td>
+              <td>11</td>
+              <td>2</td>
+              <td>4</td>
+              <td>5</td>
+              <td class="negative">8</td>
+              <td class="negative">18</td>
+              <td class="points"><strong>10</strong></td>
+            </tr>
+
+            <tr class="relegation">
+              <td class="position">
+                <span class="position-number">8</span>
+                <div class="position-indicator relegation"></div>
+              </td>
+              <td class="team">
+                <div class="team-info">
+                  <span class="team-name">Krvije</span>
+                  <span class="team-form">
+                    <span class="result loss">I</span>
+                    <span class="result loss">I</span>
+                    <span class="result loss">I</span>
+                    <span class="result draw">N</span>
+                    <span class="result loss">I</span>
+                  </span>
+                </div>
+              </td>
+              <td>11</td>
+              <td>1</td>
+              <td>2</td>
+              <td>8</td>
+              <td class="negative">5</td>
+              <td class="negative">25</td>
+              <td class="points"><strong>5</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+  <div class="right-sidebar"></div>
 </div>
